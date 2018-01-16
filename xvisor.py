@@ -8,6 +8,7 @@ class Parser():
 
 
     def __init__(self):
+
         self.config = configparser.ConfigParser()
         self.config.read('config.ini')
 
@@ -31,12 +32,15 @@ class Parser():
 
 
     def generate_csv(self):
+
         csv_delimiter = self.config['CSV_FILE']['delimiter']
         x_delimiter = self.config['FORMAT']['x_delimiter']
+
         with open(self.test_path, 'r') as testfile, \
                 open(self.ref_path, 'r') as reffile, \
                 open(self.csv_path, 'w', newline='') as csvfile:
-            csv_writer = csv.writer(csvfile, delimiter=csv_delimiter)
+            csv_writer = csv.writer(csvfile,
+                                    delimiter=csv_delimiter)
 
             order = self.config['FORMAT']['xvisor_order'].split(x_delimiter)
             index_result = order.index(self.config['FORMAT']['id'])
@@ -53,12 +57,16 @@ class Parser():
                     res = tline[index_result]
                 csv_config = self.config['CSV_FILE']
 
+                # ERROR
                 if res.startswith(self.config['FORMAT']['error_msg']):
                     csv_writer.writerow(csvline + [csv_config['runtime_error_tag']])
+                # DEADLOCK
                 elif res == self.config['FORMAT']['deadlock_tag']:
                     csv_writer.writerow(csvline + [csv_config['deadlock_tag']])
+                # CORRECT
                 elif res == rline:
                     csv_writer.writerow(csvline + [csv_config['correct_tag']])
+                # WRONG VALUE
                 else:
                     csv_writer.writerow(csvline + [csv_config['wrong_value_tag']])
 
