@@ -1,6 +1,14 @@
 # xvisor-app
 **xvisor** parser for CSUG project
 
+## Execution
+
+`python3 xvisor.py` runs the comparator and loads the config from the `config.ini` file
+
+`python3 visualization.py` generates the heatmap under a default name `heatmap.jpg`
+
+`python3 PIL_image_reader.py <image_path>` reads the image and generates the .h file containing the pixels
+
 ## Configuration Sections
 The parser is configurable using the `config.ini` file.
 ### [FORMAT]
