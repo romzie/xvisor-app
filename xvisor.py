@@ -64,7 +64,7 @@ class Parser():
                 elif res == self.config['FORMAT']['deadlock_tag']:
                     csv_writer.writerow(csvline + [csv_config['deadlock_tag']])
                 # CORRECT
-                elif res == rline:
+                elif res == rline[:-1]:
                     csv_writer.writerow(csvline + [csv_config['correct_tag']])
                 # WRONG VALUE
                 else:
