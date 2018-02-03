@@ -16,9 +16,21 @@ class Visualizer():
         self.delimiter = config['CSV_FILE']['delimiter']
         self.csv_path = config['CSV_FILE']['path']
 
-        # Tags defined in 'config.ini' FIXME read config file
-        self.tags = ['NO_DATA', 'CORRECT', 'VALUE_ERR', 'RTE', 'DEADLOCK']
-        self.cmap = colors.ListedColormap(['#FFFFFF', '#00FF00', '#FF7800', '#FF0000', '#FFFF00'])
+        # Tags
+        no_tag = config['VISUAL']['no_data_tag']
+        corr_tag = config['CSV_FILE']['correct_tag']
+        val_tag = config['CSV_FILE']['wrong_value_tag']
+        rte_tag = config['CSV_FILE']['runtime_error_tag']
+        dl_tag = config['CSV_FILE']['deadlock_tag']
+        self.tags = [no_tag, corr_tag, val_tag, rte_tag, dl_tag]
+
+        # Color associated with tags
+        no_c = config['VISUAL']['no_data_color']
+        corr_c = config['VISUAL']['correct_color']
+        wv_c = config['VISUAL']['wrong_value_color']
+        rte_c = config['VISUAL']['rte_color']
+        dl_c = config['VISUAL']['dl_color']
+        self.cmap = colors.ListedColormap([no_c, corr_c, wv_c, rte_c, dl_c])
 
     def create_hitmap(self):
 

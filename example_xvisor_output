@@ -1,0 +1,23 @@
+[guest0] kicked
+[guest0] paused
+Injected fault at address 0x12121212 at cycle 45.
+[guest0] resumed
+Result: p12 0 12 p5 0 8
+[guest0] kicked
+[guest0] paused
+Injected fault at address 0x00FF00FF at cycle 23.
+
+[guest0] resumed
+Result: Error: file not found.
+
+[guest0] kicked
+[guest0] paused
+Injected fault at address 0x12345678 at cycle 1.
+[guest0] resumed
+Result: 34
+
+[guest0] kicked
+[guest0] paused
+Injected fault at address 0x45454545 at cycle 12.
+[guest0] resumed
+Result: DEADLOCK
