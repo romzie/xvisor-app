@@ -70,25 +70,25 @@ class Visualizer():
                         break
 
         # Build figure
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(10, 8))
 
         # Plot heatmap
         heatmap = ax.pcolormesh(heat, cmap=self.cmap)
         nb_ticks = len(self.tags)
         ticks = np.linspace(0, nb_ticks-1, nb_ticks+1) + 0.5
-        cbar = fig.colorbar(heatmap, ticks=ticks, orientation='horizontal')
+        cbar = fig.colorbar(heatmap, ticks=ticks, orientation='vertical')
 
         # Add carriage return every 2 tags for readability
-        for i in range(len(self.tags)):
-            if i % 2 == 1:
-                self.tags[i] = "\n" + self.tags[i]
-        cbar.ax.set_xticklabels(self.tags)
+        #for i in range(len(self.tags)):
+        #    if i % 2 == 1:
+        #        self.tags[i] = "\n" + self.tags[i]
+        cbar.ax.set_yticklabels(self.tags)
 
         # Center labels
         ax.set_xticks(np.arange(len(cycles)) + 0.5, minor=False)
         ax.set_yticks(np.arange(len(adresses)) + 0.5, minor=False)
 
-        ax.set_xticklabels(cycles, minor=False)
+        ax.set_xticklabels(cycles, minor=False, rotation=90)
         ax.set_yticklabels(adresses, minor=False)
 
         # Adding readability
