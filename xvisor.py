@@ -22,7 +22,8 @@ class Parser():
             print('Error: Invalid test file path')
         if not os.path.isfile(self.ref_path):
             print('Error: Invalid reference file path')
-        if os.path.isfile(self.csv_path) and not sys.argv[1] == "-y":
+        y = len(sys.argv) > 1 and sys.argv[1] == "-y"
+        if os.path.isfile(self.csv_path) and not y:
             answer = input('Warning: CSV file already exists, overwrite it? (y/n) ')
             while answer.lower() not in ['y', 'n', 'yes', 'no']:
                 answer = input('Expected y/n ')
